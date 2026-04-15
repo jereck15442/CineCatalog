@@ -197,7 +197,7 @@
     <script>
       const API_URL =
         window.location.hostname === 'localhost'
-          ? 'http://localhost:3000/api'
+          ? 'https://cinecatalog.onrender.com'
           : '/api';
 
       async function loadMovies() {
@@ -207,7 +207,7 @@
       }
 
       async function loadTopRated() {
-        const res = await fetch(`${API_URL}/movies/featured/top`);
+        const res = await fetch(`https://cinecatalog.onrender.com/movies/featured/top`);
         const data = await res.json();
         displayMovies(data);
       }
@@ -239,7 +239,7 @@
 
         if (!title || !genre) return alert('Please fill in title and genre');
 
-        const res = await fetch(`${API_URL}/movies`, {
+        const res = await fetch(`https://cinecatalog.onrender.com/movies`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ title, genre, year, rating }),
@@ -254,7 +254,7 @@
 
       async function deleteMovie(id) {
         if (confirm('Remove this movie from your catalog?')) {
-          await fetch(`${API_URL}/movies/${id}`, { method: 'DELETE' });
+          await fetch(`https://cinecatalog.onrender.com/movies/${id}`, { method: 'DELETE' });
           loadMovies();
         }
       }
